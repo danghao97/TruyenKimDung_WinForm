@@ -27,5 +27,10 @@ namespace BTLDotNet.View
         {
             this.DialogResult = DialogResult.Cancel;
         }
+
+        public string getInputSearch()
+        {
+            return textBox1.Text;
+        }
     }
 }

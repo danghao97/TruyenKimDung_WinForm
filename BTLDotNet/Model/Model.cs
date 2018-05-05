@@ -140,6 +140,7 @@ namespace BTLDotNet.Model
     class MyDatabase
     {
         private const string STR_CONNECT = "Server=localhost\\sqlexpress;Database=BTLDotNet;Integrated Security=True;MultipleActiveResultSets=True";
+
         public static Stories getStories()
         {
             Stories stories = null;

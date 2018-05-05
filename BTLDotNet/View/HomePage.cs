@@ -45,7 +45,8 @@ namespace BTLDotNet.View
             if (match != null)
             {
                 MessageBox.Show(match.Value);
-            } else
+            }
+            else
             {
                 List<Result> results = regex.FuzzyMethod();
             }
@@ -98,13 +99,13 @@ namespace BTLDotNet.View
             Model.Chapter chap = (Model.Chapter)listchap.SelectedItem;
             idh = chap.idh;
             lbChapName.Text = chap.name;
-            contentchap.Text = chap.content.Replace("\r\n", "\n");
+            contentchap.Text = "    " + chap.content.Replace("\r\n", "\n    ");
             MarkWrongRhythm();
 
-            contentchap.SelectionStart = 0;
-            contentchap.SelectionIndent = 100;
-            contentchap.SelectionHangingIndent = -70;
-            contentchap.SelectionRightIndent = 30;
+            //contentchap.SelectionStart = 0;
+            //contentchap.SelectionIndent = 100;
+            //contentchap.SelectionHangingIndent = -70;
+            //contentchap.SelectionRightIndent = 30;
         }
 
         public void MarkWrongRhythm()
@@ -257,12 +258,11 @@ namespace BTLDotNet.View
 
             if (testDialog.ShowDialog(this) == DialogResult.OK)
             {
-                ResultSearch result = new ResultSearch();
-                result.Show();
+                ResultSearch result = new ResultSearch(this, testDialog.getInputSearch());
             }
             else
             {
-                MessageBox.Show("Huy", "Huy");
+                // MessageBox.Show("Huy", "Huy");
             }
             testDialog.Dispose();
         }

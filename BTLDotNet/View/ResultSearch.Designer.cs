@@ -61,6 +61,7 @@
             this.ClientSize = new System.Drawing.Size(800, 583);
             this.Controls.Add(this.listBox1);
             this.Name = "ResultSearch";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ResultSearch";
             this.ResumeLayout(false);
 

@@ -15,6 +15,8 @@ namespace BTLDotNet.Controller
         private String content;
         private int n;
         List<Match> listMatch = new List<Match>();
+        private String storyname;
+        private String chapname;
 
         public String InputString
         {
@@ -52,7 +54,7 @@ namespace BTLDotNet.Controller
         {
             for (int i = 0; i < n; i++)
             {
-                Regex r = new Regex(@"" + rhythms[i]);
+                Regex r = new Regex(@"" + rhythms[i], RegexOptions.IgnoreCase);
                 MatchCollection mc = r.Matches(content);
                 foreach (Match e in mc)
                 {
@@ -73,15 +75,15 @@ namespace BTLDotNet.Controller
                 for (int i = 0; i <= listMatch.Count - l; i++)
                 {
                     int c = CountDifferentRhythm(i, i + l);
-                    if (c == l || (l == n && c > 3 * l /5))
+                    if (c == l || (l == n && c > 3 * l / 5))
                     {
                         int distance = 0;
                         for (int k = i; k < i + l - 1; k++)
                         {
                             distance += listMatch[k + 1].Index - listMatch[k].Index;
                         }
-                        if(distance < 1000)
-                            listResult.Add(new Result(listMatch[i].Index, listMatch[i + l - 1].Index, (byte)l, distance));
+                        if (distance < 1000)
+                            listResult.Add(new Result(listMatch[i].Index, listMatch[i + l - 1].Index + listMatch[i+l-1].Value.Length, (byte)l, distance));
                     }
                 }
             }
@@ -119,6 +121,11 @@ namespace BTLDotNet.Controller
             this.end = end;
             this.numberRhythmsMatch = numberRhythmsMatch;
             this.distance = distance;
+        }
+
+        public override string ToString()
+        {
+            return begin + " - " + end;
         }
     }
 }
